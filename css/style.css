@@ -984,9 +984,10 @@ body.offcanvas {
       transition: transform 0.3s, opacity 0.3s, -webkit-transform 0.3s;
       -webkit-transform: translate3d(0, -15px, 0);
       transform: translate3d(0, -15px, 0);
-      margin-bottom: 15px; }
-      .project .desc h3 a {
-        color: #fff; }
+      margin-bottom: 15px; 
+      color: #fff;
+    }
+    
     .project .desc span {
       display: block;
       color: rgba(255, 255, 255, 0.7);
@@ -1000,7 +1001,7 @@ body.offcanvas {
       -webkit-transform: translate3d(0, 15px, 0);
       transform: translate3d(0, 15px, 0); }
       .project .desc span a {
-        color: #000; }
+        color: #fff; }
     @media screen and (max-width: 768px) {
       .project .desc {
         opacity: 1;
@@ -1009,7 +1010,7 @@ body.offcanvas {
           font-style: 28px;
           -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
-          color: #000; }
+          color: #fff; }
         .project .desc span {
           -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0); } }
@@ -1428,3 +1429,27 @@ body.offcanvas {
 
 .js .animate-box {
   opacity: 0; }
+
+.lg-toolbar {
+  background: 0; }
+  .lg-toolbar #lg-share, #lg-download {
+    display: none; }
+  .lg-toolbar .lg-icon {
+    color: #ccc; }
+  .lg-toolbar #lg-counter, #lg-counter-current, #lg-counter-all {
+    color: #ccc; }
+.lg-actions .lg-icon {
+  background: 0;
+  color: #ccc; }
+.lg-sub-html {
+  color: white !important;
+  background: 0; }
+  .lg-sub-html h4 {
+    font-size: 16pt;
+    color: white; }
+  .lg-sub-html p {
+    font-size: 12pt;
+    color: white; }
+.lg-outer .lg-toogle-thumb {
+  background: 0;
+  color: #ccc; }

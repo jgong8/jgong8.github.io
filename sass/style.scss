@@ -1297,6 +1297,7 @@ margin-left: -20px;
 	&:hover{
 		.desc{
 			opacity: 1;
+			cursor: pointer;
 			h3{
 				-webkit-transform: translate3d(0, 0, 0);
 				transform: translate3d(0, 0, 0);

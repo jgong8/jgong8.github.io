@@ -1014,7 +1014,8 @@ body.offcanvas {
           -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0); } }
   .project:hover .desc {
-    opacity: 1; }
+    opacity: 1; 
+    cursor: pointer; }
     .project:hover .desc h3 {
       -webkit-transform: translate3d(0, 0, 0);
       transform: translate3d(0, 0, 0); }

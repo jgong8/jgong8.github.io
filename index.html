@@ -175,13 +175,13 @@
 								<div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
 									<div class="services color-2">
 										<span class="icon2"><i class="icon-world"></i></span>
-										<h3>Web Consultancy</h3>
+										<h3>Web</h3>
 									</div>
 								</div>
 								<div class="col-md-3 animate-box" data-animate-effect="fadeInTop">
 									<div class="services color-3">
 										<span class="icon2"><i class="icon-cloud4"></i></span>
-										<h3>Cloud Computing</h3>
+										<h3>Cloud</h3>
 									</div>
 								</div>
 								<div class="col-md-3 animate-box" data-animate-effect="fadeInBottom">
@@ -656,19 +656,56 @@
 							</div>
 						</div>
 					</div>	
-
-					<div class="row">
-						<div class="col-md-12 animate-box">
-							<p><small>&copy;J Gong <script>document.write(new Date().getFullYear());</script>, All rights reserved.
-							</p>
-						</div>
-					</div>
 				
 				</div>
 			</section>
-		
-			
+			<section class="colorlib-contact" data-section="contact">
+				<div class="colorlib-narrow-content">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+							<span class="heading-meta">Get in Touch </span>	
+							<h2 class="colorlib-heading">Contact m
+								e  <i class="icon-mail"></i></h2> 
+						</div>
+					</div>
+					<div class="row">	
+						<div class="col-md-8 col-md-push-1">
+							<div class="row">
+								<div class=" col-md-10 col-md-offset-1 col-md-pull-1 animate-box" data-animate-effect="fadeInRight">		
 
+									<form name="msgform" id="msgform" action="https://quiet-stacker-293718.wl.r.appspot.com/sm"  onchange="$('#result').empty()">					
+										<div class="form-group">
+									 		<input name="contact_name" id="contact_name" type="text" class="form-control" placeholder="Name (Required)" onchange="$('#result').empty()"  required>								
+										</div>	
+										<div class="form-group">																
+											<input name="contact_email" id="contact_email" type="text" class="form-control" placeholder="Email (Required)"  required>
+										</div>
+										<div class="form-group">								
+											<input name="msg_subject" id="msg_subject" type="text" class="form-control" placeholder="Subject (Optional)">
+										</div>
+										<div class="form-group">
+											<textarea name="send_msg" id="send_msg" cols="30" rows="7" class="form-control" placeholder="Message (Required)" required></textarea>
+										</div>
+
+										<div class="form-group">
+											<input type="submit" class="btn btn-primary btn-send-message" value="Send Message" >
+										</div>									
+									</form>
+								
+								</div>
+							</div>
+						</div>		
+					</div>
+					<!-- the result will be rendered inside this div -->
+					<div id="result" ><br></div>
+				</div>
+			</section>
+			<section>
+				<div class="colorlib-footer text-center ">
+					<p><small>&copy;J Gong <script>document.write(new Date().getFullYear());</script>, All rights reserved. Template by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+			
+				</div>
+			</section>
 		</div><!-- end:colorlib-main -->
 		</div><!-- end:container-wrap -->
 	</div><!-- end:colorlib-page -->
@@ -692,7 +729,9 @@
 	<!-- Lightgallery -->
 	<script src="js/lightgallery-all.min.js"></script>
 
-	
+	<!-- jQuery Validate -->
+	<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+
 	<!-- MAIN JS -->
 	<script src="js/main.js"></script>
 
@@ -847,6 +886,79 @@
 
 
 		});
+	</script>
+
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+			$('#msgform').validate({
+				rules: {
+					contact_name: {
+						minlength: 3,
+						required: true
+					},
+
+        			contact_email: {
+            			minlength: 3,
+            			maxlength: 255,
+            			required: true,
+            			email: true
+					},
+					
+					send_msg: {
+						minlength: 2,
+						maxlength: 1000,
+						required: true
+					}
+
+    			},
+    			highlight: function (element) {
+        			$(element).closest('.form-group').addClass('has-error');
+    			},
+    			unhighlight: function (element) {
+        			$(element).closest('.form-group').removeClass('has-error');
+    			},
+    			errorElement: 'span',
+    			errorClass: 'help-block',
+    			errorPlacement: function (error, element) {
+        			if (element.parent('.input-group').length) {
+            			error.insertAfter(element.parent());
+        			} else {
+            			error.insertAfter(element);
+        			}
+    			},
+    			submitHandler: function (form) {
+				  	// Get some values from elements on the page:
+					
+					
+					return false;
+				}
+
+			});
+
+			$('#msgform').submit(function(event) {
+
+				event.preventDefault();
+				
+				var $form = $('#msgform'),
+					name = $form.find( "input[name='contact_name']" ).val(),
+					email = $form.find("input[name='contact_email']" ).val(),
+					subject = $form.find("input[name='msg_subject']" ).val(),
+					message = $form.find("textarea[name='send_msg']" ).val(),
+					myurl = $form.attr("action");
+				
+					// Send the data using post
+					$.get( myurl, {n: name, e: email, s: subject, m: message});
+					
+
+					$('#result').empty().append("<strong>Thank you for sending the message!</strong>");
+					$('#msgform')[0].reset();
+
+			});
+
+
+		});	
+
 	</script>
 
 

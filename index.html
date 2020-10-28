@@ -938,8 +938,7 @@
 					//myurl = "http://localhost:8080/sm"
 
 					// Send the data using get
-					$.get( myurl, {n: name, e: email, s: subject, m: message}, function (data, status){				
-						alert ("1 success:" + data + status); 
+					$.get( myurl, {n: name, e: email, s: subject, m: message}, function (data, status){	
 						$('#result').empty().append("<strong>"+ data +"</strong>");
 						$('#msgform')[0].reset();
 						$('#contact_name').focus();

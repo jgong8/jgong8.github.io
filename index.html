@@ -690,7 +690,7 @@
 										</div>
 
 										<div class="form-group">
-											<input type="submit" class="btn btn-primary btn-send-message" value="Send Message" >
+											<input type="submit" class="btn btn-primary btn-send-message" value="Send Message" onclick="$('#result').empty()" >
 										</div>									
 									</form>
 								
@@ -936,15 +936,23 @@
 					subject = $form.find("input[name='msg_subject']" ).val(),
 					message = $form.find("textarea[name='send_msg']" ).val(),
 					myurl = $form.attr("action");
-				
-					// Send the data using post
-					$.get( myurl, {n: name, e: email, s: subject, m: message});
-					
 
-					$('#result').empty().append("<strong>Thank you for sending the message!</strong>");
-					$('#msgform')[0].reset();
-					$('#contact_name').focus();
-				
+					// Send the data using post
+					$.get( myurl, {n: name, e: email, s: subject, m: message}, function (){
+					}).success(function(data, status) { 
+						$('#result').empty().append("<strong>"+ data +"</strong>");
+						$('#msgform')[0].reset();
+						$('#contact_name').focus();
+						alert (" success" + data + status); 
+					})
+					.error(function(data, status) { 
+						alert("error"); 
+						$('#result').empty().append("<strong>"+ data +"</strong>");
+						$('#msgform')[0].reset();
+						$('#contact_name').focus();		
+						alert (" success" + data + status); 				
+					})
+													
 					return false;
 				}
 

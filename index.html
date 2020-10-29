@@ -937,7 +937,7 @@
 					myurl = $form.attr("action");
 					//myurl = "http://localhost:8080/sm"
 
-					// Send the data using get
+					/* Send the data using get
 					$.get( myurl, {n: name, e: email, s: subject, m: message}, function (data, status){	
 						$('#result').empty().append("<strong>"+ data +"</strong>");
 						$('#msgform')[0].reset();
@@ -948,7 +948,22 @@
 						$('#msgform')[0].reset();
 						$('#contact_name').focus();					
 					})
-													
+					*/
+
+					$('#result').empty().append("<strong>Sending ..........</strong>");
+					// Send the data using post 
+					$.post(myurl, JSON.stringify ({n: name, e: email, s: subject, m: message}), 
+						function (data, status){
+							$('#result').empty().append("<strong>"+ data +"</strong>");
+							$('#msgform')[0].reset();
+							$('#contact_name').focus();
+						})
+						.fail(function(){
+							$('#result').empty().append("<strong>Something is wrong, please try again later.</strong>");
+							$('#msgform')[0].reset();
+							$('#contact_name').focus();	
+						});
+					
 					return false;
 				}
 			});
